@@ -53,7 +53,7 @@ def Plot(data, labels, title):
     plt.show()
 
 
-def TGP(data, k, photo_path, threshold):
+def TGP(data, k, photo_path, threshold=None):
     '''
 
     Parameters
@@ -87,7 +87,8 @@ def TGP(data, k, photo_path, threshold):
     plt.figure(num)
     num += 1
     plt.plot(probality[:, 0], probality[:, 1])
-    plt.axvline(x=threshold, c="r", ls="--", lw=1.5)
+    if threshold is not None:
+        plt.axvline(x=threshold, c="r", ls="--", lw=1.5)
     plt.title('Decision graph', fontstyle='italic', size=20)
     plt.xlabel('wight', fontsize=20)
     plt.ylabel('probability', fontsize=20)
