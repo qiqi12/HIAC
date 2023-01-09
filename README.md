@@ -11,7 +11,7 @@ for i in range(d):# shrink objects to ameliorate dataset
   bata = shrink(data, k, T, neighbor_index)
   data = bata
 ```
-##Note
+## Note
 1. All the experiments we have done are saved in the **experiment** folder. They are robustness experiment (folder **robust_experiment**), contrast experiment (folder **compare_experiment**) and advantage analysis experiment (folder **advantage_experiment**) .The code (HIAC.py) in it can be run directly, and we have configured the appropriate parameters of HIAC.
 2. All datasets are saved in the **data-sets** folder and are classified.
 3. The file DPC.py is used in some python files. The compute_acc_probability.py calculate the accuracy of 100 sets of parameter pairs and plot the graph which describe the probabilities with different levels of accuracy. Before and after optimization, the probabilities of DBSCAN and BIRCH with different levels of accuracy. 
