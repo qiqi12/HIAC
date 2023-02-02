@@ -14,6 +14,28 @@ for i in range(d):# shrink objects to ameliorate dataset
   data = bata
 ```
 ## Note
-1. All the experiments we have done are saved in the **experiment** folder. They are robustness experiment (folder **robust_experiment**), contrast experiment (folder **compare_experiment**) and advantage analysis experiment (folder **advantage_experiment**) .The code (HIAC.py) in it can be run directly, and we have configured the appropriate parameters of HIAC.
-2. All datasets are saved in the **data-sets** folder and are classified.
-3. The file DPC.py is used in some python files. The compute_acc_probability.py calculate the accuracy of 100 sets of parameter pairs and plot the graph which describe the probabilities with different levels of accuracy. Before and after optimization, the probabilities of DBSCAN and BIRCH with different levels of accuracy. 
+1. The code (HIAC.py) can be run directly, and we have enumerated the appropriate parameters for each dataset in file **parameter-config.xls**.
+2. All datasets that we used for experiments are saved in the **data-sets** folder and are classified. We used 8 real-datasets in our comparison experiments, four of which (i.e. **Banknote authentication、Seeds、Teaching assistant evaluation、Wireless indoor location**) are given in folder **./data-sets/real-datasets** and the other four (i.e. **Breast cancer、Digit、Iris、Wine**) can be loaded from skearn. The code to load these datasets is as follows:
+```
+from sklearn.datasets import load_iris# iris dataset
+from sklearn.datasets import load_wine# wine dataset
+from sklearn.datasets import load_digits# digit dataset
+from sklearn.datasets import load_breast_cancer# breast cancer dataset
+
+iris = load_iris()
+data = iris.data# 数据
+label = iris.target# 标签
+```
+3. The file DPC.py is used for comparison experiments. Actually, three clustering algorithms are used for comparison experiments, the other two algorithms (i.e. **Kmeans、Agg**) can be loaded from sklearn. The code to load these algorithms is as follows:
+```
+import sklearn.cluster as sc
+from DPC import *
+
+res = sc.KMeans(n_clusters=cluster_num).fit(data)
+label_kmeans = res.labels_
+
+res = sc.AgglomerativeClustering(n_clusters=cluster_num).fit(data)
+label_agg = res.labels_
+
+label_dpc = DPC(data)
+```
