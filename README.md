@@ -30,6 +30,7 @@ label = iris.target# 标签
 ```
 import sklearn.cluster as sc
 from DPC import *
+from sklearn import metrics
 
 res = sc.KMeans(n_clusters=cluster_num).fit(data)
 label_kmeans = res.labels_
@@ -37,5 +38,6 @@ label_kmeans = res.labels_
 res = sc.AgglomerativeClustering(n_clusters=cluster_num).fit(data)
 label_agg = res.labels_
 
-label_dpc = DPC(data)
+label_dpc = DPC(data, cluster_num)
+nmi = metrics.adjusted_mutual_info_score(true-label, label_dpc, average_method='max')
 ```
